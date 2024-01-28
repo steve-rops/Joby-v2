@@ -1,4 +1,4 @@
-import { data_query_number } from "../data/API";
+import { data_query_number } from "../data/api";
 
 export function Loader() {
   return (

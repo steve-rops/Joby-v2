@@ -1,4 +1,4 @@
-import { data_query_number } from "../data/API";
+import { data_query_number } from "../data/api";
 import { countries } from "../data/countries";
 import { useJobsCnxt } from "../contexts/JobsContext";
 
