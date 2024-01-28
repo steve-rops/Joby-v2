@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { ID, KEY, data_query_number } from "../data/api";
 import { useStatusContext } from "./StatusContext";
 
 const Context = createContext();
@@ -62,6 +61,10 @@ function reducer(state, action) {
 //////
 //////
 function JobsContext({ children }) {
+  const key = process.env.KEY;
+  const id = process.env.ID;
+  const queryNumber = process.env.data_query_number;
+
   const { status } = useStatusContext();
 
   const [
@@ -73,7 +76,7 @@ function JobsContext({ children }) {
     function () {
       async function fetchData() {
         const res = await fetch(
-          `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${ID}&app_key=${KEY}&results_per_page=${data_query_number}&what=${query}`
+          `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${id}&app_key=${key}&results_per_page=${queryNumber}&what=${query}`
         );
         const { results } = await res.json();
 
@@ -86,7 +89,7 @@ function JobsContext({ children }) {
       //////////////////////////////////////
     },
 
-    [country, query, status]
+    [country, query, status, id, key, queryNumber]
   );
 
   return (
@@ -100,6 +103,7 @@ function JobsContext({ children }) {
         selectedID,
         status,
         dataWithCoords,
+        queryNumber,
       }}
     >
       {children}
