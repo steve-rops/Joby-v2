@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root {
+  --tw-bg-opacity: 1;
+  --bg-indigo-400: rgba(129, 140, 248, var(--tw-bg-opacity));
+  --bg-indigo-500: rgba(99, 102, 241, var(--tw-bg-opacity));
+  --bg-indigo-100: rgba(238, 242, 255, 1);
+  --bg-custom: rgba(170, 211, 223, 1);
+}
+
+.bg-custom {
+  background-color: var(--bg-custom);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bg-indigo-100);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bg-indigo-500);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-indigo-400);
+}
+
+select:focus {
+  outline: none;
+}
+
+.app {
+  width: 100lvw;
+  height: 100lvh;
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  height: 90%;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  /* align-items: center; */
+  /* flex-direction: column; */
+}
+
+/* .jobs-container {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  border-radius: inherit;
+  overflow-y: scroll;
+  padding: 2px;
+} */
+.job-info {
+  border: 1px solid var(--bg-indigo-100);
+  border-left: 8px solid var(--bg-indigo-500);
+}
+
+.border-light {
+  border: 1px solid var(--bg-indigo-100);
+}
+
+.map {
+  height: 100%;
+  width: 60%;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.rario-1 {
+  aspect-ratio: 1;
+}
