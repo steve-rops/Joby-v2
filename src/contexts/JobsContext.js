@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { ID, KEY, data_query_number } from "../data/API";
+import { ID, KEY, data_query_number } from "../data/api";
 import { useStatusContext } from "./StatusContext";
 
 const Context = createContext();
