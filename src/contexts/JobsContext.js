@@ -1,6 +1,9 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useStatusContext } from "./StatusContext";
-
+const key = process.env.REACT_APP_KEY;
+const id = process.env.REACT_APP_ID;
+const queryNumber = process.env.REACT_APP_DATA_QUERY_NUMBER;
+console.log(key);
 const Context = createContext();
 
 const initialState = {
@@ -61,9 +64,7 @@ function reducer(state, action) {
 //////
 //////
 function JobsContext({ children }) {
-  const key = process.env.KEY;
-  const id = process.env.ID;
-  const queryNumber = process.env.data_query_number;
+  console.log(key, id, queryNumber);
 
   const { status } = useStatusContext();
 
