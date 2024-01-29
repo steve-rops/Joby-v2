@@ -5,15 +5,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { JobsContext } from "./contexts/JobsContext";
 import { StatusContext } from "./contexts/StatusContext";
+import { UserContext } from "./contexts/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <StatusContext>
-        <JobsContext>
-          <App />
-        </JobsContext>
+        <UserContext>
+          <JobsContext>
+            <App />
+          </JobsContext>
+        </UserContext>
       </StatusContext>
     </BrowserRouter>
   </React.StrictMode>
