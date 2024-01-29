@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { ChangeView } from "./ChangeView";
 import { useJobsCnxt } from "../contexts/JobsContext";
 import MapInit from "./MapInit";

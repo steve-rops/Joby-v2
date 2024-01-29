@@ -3,7 +3,7 @@ import Map from "./Map";
 import MapLoader from "./MapLoader";
 
 function RightSectionMap() {
-  const { data, isLoading } = useJobsCnxt();
+  const { isLoading } = useJobsCnxt();
 
   return <>{isLoading ? <MapLoader /> : <Map />}</>;
 }
