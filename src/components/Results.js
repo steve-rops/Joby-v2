@@ -1,10 +1,9 @@
-import { data_query_number } from "../data/api";
 import { countries } from "../data/countries";
 import { useJobsCnxt } from "../contexts/JobsContext";
 
 export function Results() {
-  const { country, data } = useJobsCnxt();
-  if (data.length < data_query_number) return;
+  const { country, data, queryNumber } = useJobsCnxt();
+  if (data.length < queryNumber) return;
   const countrr = countries.filter((c) => c.short === country)[0].countryName;
 
   return (
