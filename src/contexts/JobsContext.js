@@ -17,9 +17,6 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "startFetching":
-      const status = JSON.parse(localStorage.getItem("status"));
-      console.log(status);
-
       return { ...state, isLoading: true };
     case "dataFetched":
       const updatedData = action.payload.map((job) => {
