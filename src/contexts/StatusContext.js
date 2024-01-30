@@ -1,13 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Context = createContext();
 
 function StatusContext({ children }) {
+  const navigate = useNavigate();
   const [status, setStatus] = useState("inactive");
 
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
-  }, [status]);
+    if (status === "inactive") navigate("/");
+  }, [status, navigate]);
 
   return (
     <Context.Provider value={{ status, setStatus }}>
