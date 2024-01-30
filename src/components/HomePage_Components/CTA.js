@@ -35,12 +35,12 @@ function CTA() {
           <input
             type="text"
             placeholder="tell me your name"
-            className="border-2 p-2 rounded-xl"
+            className="border-[1px] p-2 rounded-xl border-indigo-500"
             required
           />
 
           <button
-            className={`${styles.ctaButton} bg-indigo-500 text-white rounded-xl p-1 px-2 hover:bg-white hover:text-indigo-500 hover:border-2 hover:border-indigo-500 hover:rounded-xl transition `}
+            className={`${styles.ctaButton} bg-indigo-500 border-2 border-indigo-500 text-white rounded-xl p-1 px-2 hover:bg-white hover:text-indigo-500  hover:border-2  hover:border-indigo-500 hover:rounded-xl `}
             onClick={() => setStatus("active")}
           >
             let's start

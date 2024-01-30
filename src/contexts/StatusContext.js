@@ -1,9 +1,15 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const Context = createContext();
 
 function StatusContext({ children }) {
   const [status, setStatus] = useState("inactive");
+  console.log(status);
+
+  useEffect(() => {
+    localStorage.setItem("status", JSON.stringify(status));
+  }, [status]);
+
   return (
     <Context.Provider value={{ status, setStatus }}>
       {children}

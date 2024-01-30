@@ -11,11 +11,15 @@ const initialState = {
   query: "",
   selectedID: null,
   isLoading: true,
+  status: "inactive",
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "startFetching":
+      const status = JSON.parse(localStorage.getItem("status"));
+      console.log(status);
+
       return { ...state, isLoading: true };
     case "dataFetched":
       const updatedData = action.payload.map((job) => {
@@ -34,21 +38,20 @@ function reducer(state, action) {
         dataWithCoords: updatedData.filter((job) =>
           job.latitude ? job : null
         ),
-        isLoading: false,
       };
+    case "fetchingEnded":
+      return { ...state, isLoading: false };
     case "setQuery":
       return {
         ...state,
         query: action.payload,
         selectedID: null,
-        isLoading: true,
       };
     case "setCountry":
       return {
         ...state,
         country: action.payload,
         selectedID: null,
-        isLoading: true,
       };
     case "setSelectedID":
       return { ...state, selectedID: Number(action.payload) };
@@ -62,23 +65,31 @@ function reducer(state, action) {
 //main function - Context Provider//
 //////
 //////
-function JobsContext({ children }) {
-  const { status } = useStatusContext();
 
+function JobsContext({ children }) {
   const [
     { country, data, query, selectedID, isLoading, dataWithCoords },
     dispatch,
   ] = useReducer(reducer, initialState);
 
+  const { status } = useStatusContext();
+
   useEffect(
     function () {
       async function fetchData() {
-        const res = await fetch(
-          `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${_id}&app_key=${_key}&results_per_page=${queryNumber}&what=${query}`
-        );
-        const { results } = await res.json();
+        dispatch({ type: "startFetching" });
+        try {
+          const res = await fetch(
+            `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${_id}&app_key=${_key}&results_per_page=${queryNumber}&what=${query}`
+          );
+          const { results } = await res.json();
 
-        dispatch({ type: "dataFetched", payload: results });
+          dispatch({ type: "dataFetched", payload: results });
+        } catch (err) {
+          console.error(err);
+        } finally {
+          dispatch({ type: "fetchingEnded" });
+        }
       }
       ///
       //derived state of StatusContext parent of JobsContext
@@ -99,7 +110,7 @@ function JobsContext({ children }) {
         query,
         dispatch,
         selectedID,
-        status,
+
         dataWithCoords,
         queryNumber,
       }}
