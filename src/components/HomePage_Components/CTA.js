@@ -2,7 +2,6 @@ import styles from "./CTA.module.css";
 import { useStatusContext } from "../../contexts/StatusContext";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
-import GeiaSouOlgaki from "../../pages/GeiaSouOlgaki";
 
 function CTA() {
   const { setStatus } = useStatusContext();
@@ -12,7 +11,6 @@ function CTA() {
   return (
     <>
       <div className="h-[25%] flex items-center justify-center flex-col">
-        <GeiaSouOlgaki />
         <h1 className={styles.header}>
           Hi there<span className={styles.wavingHand}>👋🏻</span>
         </h1>

@@ -1,4 +1,4 @@
-import { Marker, Popup } from "react-leaflet";
+import { Marker, Tooltip } from "react-leaflet";
 import { useJobsCnxt } from "../contexts/JobsContext";
 import { useNavigate } from "react-router-dom";
 import L from "leaflet";
@@ -31,12 +31,14 @@ function Markers() {
             },
           }}
         >
-          <Popup>
-            <p className="text-red-400">
-              {job.title} @{job.company.display_name}
+          {console.log(job)}
+          <Tooltip offset={[12, -25]} opacity={1}>
+            <h1 className="text-lg text-indigo-700">{job.title}</h1>
+            <p>
+              <strong>Salary:</strong> {(job.salary_max / 1000).toFixed(1)}
+              k/year
             </p>
-            <p>{job.created}</p>
-          </Popup>
+          </Tooltip>
         </Marker>
       ))}
     </>

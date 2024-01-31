@@ -1,6 +1,6 @@
 /* animation duration */
 :root {
-  --animation-duration: 250ms;
+  --animation-duration: 150ms;
 }
 
 .avatar:hover {
