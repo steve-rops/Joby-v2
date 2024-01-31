@@ -22,11 +22,11 @@ export function Navbar() {
       <div className="flex gap-2 items-center bg-indigo-500 text-white rounded-md p-2">
         <span className="text-xl">👋🏻</span>
         <span>Hi {user}</span>
-        <div className={`${styles.coinContainer}`}>
-          <div
-            className={`${styles.coin} ${styles.front}`}
-            onClick={() => setStatus("inactive")}
-          >
+        <div
+          className={`${styles.coinContainer}`}
+          onClick={() => setStatus("inactive")}
+        >
+          <div className={`${styles.coin} ${styles.front}`}>
             <Avvvatars value={`${user}`} />
           </div>
           <div className={`${styles.coin} ${styles.back} cursor-pointer`}>

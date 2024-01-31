@@ -6,6 +6,7 @@ function LandingPage() {
   return (
     <div className="container: h-screen w-screen overflow-hidden">
       <NavBar />
+
       <CTA />
       <Banner />
     </div>
