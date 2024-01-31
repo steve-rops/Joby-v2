@@ -1,9 +1,19 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CreatedContext = createContext();
 
 function UserContext({ children }) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(() => {
+    return localStorage.getItem("user");
+  });
+
+  useEffect(
+    function () {
+      if (user === "") return;
+      localStorage.setItem("user", user);
+    },
+    [user]
+  );
   return (
     <CreatedContext.Provider value={{ user, setUser }}>
       {children}

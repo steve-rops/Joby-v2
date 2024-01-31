@@ -5,7 +5,11 @@ const Context = createContext();
 
 function StatusContext({ children }) {
   const navigate = useNavigate();
-  const [status, setStatus] = useState("inactive");
+  const [status, setStatus] = useState(() => {
+    const local = localStorage.getItem("status") || "inactive";
+    if (local.includes("active")) return "active";
+    return "inactive";
+  });
 
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));

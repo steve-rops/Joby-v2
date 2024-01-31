@@ -34,7 +34,6 @@ function Markers() {
             },
           }}
         >
-          {console.log(job)}
           <Tooltip offset={[12, -25]} opacity={1} className="rounded-md">
             <div className="flex gap-1">
               <span className="p-1 px-2 font-medium bg-indigo-200 text-indigo-700 w-fit rounded-md">
