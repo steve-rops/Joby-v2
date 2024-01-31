@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import L from "leaflet";
 import blackIcon from "../photos/location.svg";
 import yellowIcon from "../photos/location-new.svg";
+import { countries } from "../data/countries";
 
 function Markers() {
+  const { country } = useJobsCnxt();
+  const currency = countries.filter((el) => el.short === country)[0].currency;
   const { dataWithCoords, dispatch } = useJobsCnxt();
 
   const navigate = useNavigate();
@@ -32,12 +35,20 @@ function Markers() {
           }}
         >
           {console.log(job)}
-          <Tooltip offset={[12, -25]} opacity={1}>
-            <h1 className="text-lg text-indigo-700">{job.title}</h1>
-            <p>
-              <strong>Salary:</strong> {(job.salary_max / 1000).toFixed(1)}
-              k/year
-            </p>
+          <Tooltip offset={[12, -25]} opacity={1} className="rounded-md">
+            <div className="flex gap-1">
+              <span className="p-1 px-2 font-medium bg-indigo-200 text-indigo-700 w-fit rounded-md">
+                {Math.floor(job.salary_max / 1000)} k {currency}
+              </span>
+              {job.isNew ? (
+                <span className="p-1 px-2 font-medium bg-yellow-400 text-yellow-800 w-fit rounded-md">
+                  NEW
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
+            <p className="text-wrap">{job.title}</p>
           </Tooltip>
         </Marker>
       ))}
