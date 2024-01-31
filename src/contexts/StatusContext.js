@@ -9,7 +9,6 @@ function StatusContext({ children }) {
 
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
-    if (status === "inactive") navigate("/");
   }, [status, navigate]);
 
   return (
