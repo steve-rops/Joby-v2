@@ -1,3 +1,8 @@
+/* animation duration */
+:root {
+  --animation-duration: 250ms;
+}
+
 .avatar:hover {
   transform: rotateY(180deg);
   /* transition: ease-in-out 800ms; */
@@ -9,7 +14,7 @@
   /* background: red; */
   display: grid;
   place-items: center;
-  perspective: 1000px;
+  /* perspective: 1000px; */
 }
 
 .coin {
@@ -24,23 +29,83 @@
 }
 
 .coin.back {
+  height: 2rem;
+  width: 2rem;
   opacity: 0;
   transform: rotateY(180deg);
   border: 1px solid white;
   border-radius: 50%;
+  display: grid;
+  place-items: center;
 }
 
-.coinContainer:hover .coin {
-  transform: rotateY(180deg);
+@keyframes coinflipFront {
+  0% {
+    transform: rotateY(35deg);
+    opacity: 0.85;
+  }
+  10% {
+    transform: rotateY(55deg);
+    opacity: 0.7;
+  }
+
+  25% {
+    transform: rotateY(90deg);
+    opacity: 0.5;
+  }
+
+  75% {
+    transform: rotateY(125deg);
+    opacity: 0.25;
+  }
+
+  85% {
+    transform: rotateY(155deg);
+    opacity: 0.15;
+  }
+  100% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
 }
 
 .coinContainer:hover .coin.front {
-  opacity: 0;
+  animation: coinflipFront var(--animation-duration) linear forwards;
+}
+
+@keyframes coinflipBack {
+  0% {
+    transform: rotateY(155deg);
+    opacity: 0.15;
+  }
+  10% {
+    transform: rotateY(125deg);
+    opacity: 0.3;
+  }
+
+  25% {
+    transform: rotateY(90deg);
+    opacity: 0.5;
+  }
+
+  75% {
+    transform: rotateY(55deg);
+    opacity: 0.65;
+  }
+  85% {
+    transform: rotateY(20deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
 }
 
 .coinContainer:hover .coin.back {
-  opacity: 1;
+  animation: coinflipBack var(--animation-duration) linear forwards;
 }
+
 /* 
 .rotateOnHover {
   transform: rotateY(180deg);
@@ -64,7 +129,7 @@
   transition: transform 0.5s ease;
 }
 
-.coin.front {
+.coin.coin.front {
   transform: rotateY(0deg);
 }
 

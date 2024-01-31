@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import Avvvatars from "avvvatars-react";
 import { useStatusContext } from "../contexts/StatusContext";
@@ -24,13 +23,13 @@ export function Navbar() {
         <span className="text-xl">👋🏻</span>
         <span>Hi {user}</span>
         <div className={`${styles.coinContainer}`}>
-          <div className={`${styles.coin} ${styles.front}`}>
-            <Avvvatars value={`${user}`} />
-          </div>
           <div
-            className={`${styles.coin} ${styles.back} cursor-pointer`}
+            className={`${styles.coin} ${styles.front}`}
             onClick={() => setStatus("inactive")}
           >
+            <Avvvatars value={`${user}`} />
+          </div>
+          <div className={`${styles.coin} ${styles.back} cursor-pointer`}>
             <RiShutDownLine />
           </div>
         </div>
