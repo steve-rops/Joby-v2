@@ -12,6 +12,7 @@ const initialState = {
   selectedID: null,
   isLoading: true,
   status: "inactive",
+  sortedBy: null,
 };
 
 function reducer(state, action) {
@@ -43,13 +44,29 @@ function reducer(state, action) {
         ...state,
         query: action.payload,
         selectedID: null,
+        sortedBy: null,
       };
     case "setCountry":
       return {
         ...state,
         country: action.payload,
         selectedID: null,
+        sortedBy: null,
       };
+    case "sort":
+      if (action.payload === "minMax")
+        return {
+          ...state,
+          data: state.data.slice().sort((a, b) => a.salary_min - b.salary_min),
+          sortedBy: action.payload,
+        };
+      if (action.payload === "maxMin")
+        return {
+          ...state,
+          data: state.data.slice().sort((a, b) => b.salary_min - a.salary_min),
+          sortedBy: action.payload,
+        };
+      break;
     case "setSelectedID":
       return { ...state, selectedID: Number(action.payload) };
     case "backBtn":
@@ -65,7 +82,7 @@ function reducer(state, action) {
 
 function JobsContext({ children }) {
   const [
-    { country, data, query, selectedID, isLoading, dataWithCoords },
+    { country, data, query, selectedID, isLoading, dataWithCoords, sortedBy },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -107,7 +124,7 @@ function JobsContext({ children }) {
         query,
         dispatch,
         selectedID,
-
+        sortedBy,
         dataWithCoords,
         queryNumber,
       }}

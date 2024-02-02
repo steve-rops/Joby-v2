@@ -1,23 +1,26 @@
-import { useState } from "react";
 import { FilterSVG } from "../svgs";
+import { useJobsCnxt } from "../contexts/JobsContext";
 
 function SortBy() {
-  const [sortValue, setSortValue] = useState("sort");
+  const { dispatch, sortedBy } = useJobsCnxt();
+
   return (
-    <div className="flex items-center rounded-lg cursor-pointer border-none border-light w-min rounded-md shadow-md py-1 px-1">
+    <div className="flex items-center cursor-pointer border-none border-light w-min rounded-md shadow-md py-1 px-1">
       <FilterSVG />
       <select
         className="text-indigo-500  "
-        value={sortValue}
-        onChange={(e) => setSortValue(e.target.value)}
+        value={`${sortedBy ? sortedBy : "sort"}`}
+        onChange={(e) => {
+          dispatch({ type: "sort", payload: e.target.value });
+        }}
       >
-        <option defaultChecked disabled value="sort" hidden>
+        <option defaultChecked value="sort" hidden>
           Sort
         </option>
-        <option value="newFirst">new first</option>
-        <option value="oldFirst">old first</option>
-        <option value="minMax">salary &darr;</option>
-        <option value="maxMin">salary &uarr;</option>
+        {/* <option value="newFirst">new first</option>
+        <option value="oldFirst">old first</option> */}
+        <option value="minMax">salary &uarr;</option>
+        <option value="maxMin">salary &darr;</option>
       </select>
     </div>
   );

@@ -3,6 +3,7 @@ src/data/Api.js
 build
 /.env  
 .env
+todo.md
 # dependencies
 node_modules
 /.pnp
