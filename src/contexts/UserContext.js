@@ -4,12 +4,11 @@ const CreatedContext = createContext();
 
 function UserContext({ children }) {
   const [user, setUser] = useState(() => {
-    return localStorage.getItem("user");
+    return localStorage.getItem("user") || null;
   });
 
   useEffect(
     function () {
-      if (user === "") return;
       localStorage.setItem("user", user);
     },
     [user]

@@ -5,10 +5,11 @@ import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage";
 import Employers from "./pages/Employers";
 import Pricing from "./pages/Pricing";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
 
 function App() {
   return (
-    <>
+    <ProtectedRoutes>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="about" element={<AboutPage />} />
@@ -18,13 +19,7 @@ function App() {
           <Route path=":id" element={<DetailedInfo />} />
         </Route>
       </Routes>
-
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </BrowserRouter> */}
-    </>
+    </ProtectedRoutes>
   );
 }
 export default App;
