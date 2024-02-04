@@ -1,4 +1,4 @@
-import banner from "../../photos/banner-joby.webp";
+import banner from "../../photos/landingpage.webp";
 import styles from "./banner.module.css";
 
 function Banner() {
