@@ -1,12 +1,11 @@
 import { useUserContext } from "../contexts/UserContext";
-import Avvvatars from "avvvatars-react";
 import { useStatusContext } from "../contexts/StatusContext";
 import styles from "./Navbar.module.css";
 import { RiShutDownLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { useJobsCnxt } from "../contexts/JobsContext";
 
-export function Navbar() {
+export const Navbar = function Navbar({ children }) {
   const { setStatus } = useStatusContext();
   const { user, setUser } = useUserContext();
   const navigate = useNavigate();
@@ -29,9 +28,7 @@ export function Navbar() {
         <span className="text-xl">👋🏻</span>
         <span>Hi {user}</span>
         <div className={`${styles.coinContainer}`} onClick={logout}>
-          <div className={`${styles.coin} ${styles.front}`}>
-            <Avvvatars value={`${user}`} />
-          </div>
+          <div className={`${styles.coin} ${styles.front}`}>{children}</div>
           <div className={`${styles.coin} ${styles.back} cursor-pointer`}>
             <RiShutDownLine />
           </div>
@@ -39,4 +36,4 @@ export function Navbar() {
       </div>
     </div>
   );
-}
+};
