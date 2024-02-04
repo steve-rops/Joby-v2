@@ -94,7 +94,7 @@ function JobsContext({ children }) {
         dispatch({ type: "startFetching" });
         try {
           const res = await fetch(
-            `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${_id}&app_key=${_key}&results_per_page=${queryNumber}&what=${query}`
+            `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${_id}&app_key=${_key}&salary_include_unknown=0&results_per_page=${queryNumber}&what=${query}`
           );
           const { results } = await res.json();
 

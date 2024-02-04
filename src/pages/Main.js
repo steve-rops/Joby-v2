@@ -3,16 +3,19 @@ import { LeftSection } from "../components/LeftSection";
 import LowerSection from "../components/LowerSection";
 import RightSectionMap from "../components/RightSection_Map";
 import { UpperSection } from "../components/UpperSection";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function Main() {
   return (
-    <Container>
-      <LeftSection>
-        <UpperSection />
-        <LowerSection />
-      </LeftSection>
-      <RightSectionMap />
-    </Container>
+    <ProtectedRoutes>
+      <Container>
+        <LeftSection>
+          <UpperSection />
+          <LowerSection />
+        </LeftSection>
+        <RightSectionMap />
+      </Container>
+    </ProtectedRoutes>
   );
 }
 

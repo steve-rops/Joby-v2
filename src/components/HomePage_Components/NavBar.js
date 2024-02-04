@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import LogInButton from "./LogInButton";
+// import LogInButton from "./LogInButton";
 
 function NavBar() {
   return (
@@ -15,10 +15,10 @@ function NavBar() {
           <NavLink className="hover:text-indigo-500" to="/employers">
             employers
           </NavLink>
-          <NavLink className="hover:text-indigo-500" to="/pricing">
+          {/* <NavLink className="hover:text-indigo-500" to="/pricing">
             pricing
-          </NavLink>
-          <LogInButton />
+          </NavLink> */}
+          {/* <LogInButton /> */}
         </div>
       </nav>
     </div>
