@@ -4,7 +4,7 @@ const Context = createContext();
 
 function StatusContext({ children }) {
   const [status, setStatus] = useState(() => {
-    const local = localStorage.getItem("status");
+    const local = localStorage.getItem("status") || "inactive";
     if (local.includes("inactive")) return "inactive";
     if (local.includes("active")) return "active";
   });
