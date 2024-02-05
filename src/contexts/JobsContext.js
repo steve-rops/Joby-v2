@@ -1,10 +1,9 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useStatusContext } from "./StatusContext";
-const _key = process.env.REACT_APP_KEY.slice(1, -2);
-const _id = process.env.REACT_APP_ID.slice(1, -2);
-const queryNumber = Number(process.env.REACT_APP_DATA_QUERY_NUMBER.slice(0, 2));
+const _key = process.env.REACT_APP_KEY;
+const _id = process.env.REACT_APP_ID;
+const queryNumber = Number(process.env.REACT_APP_DATA_QUERY_NUMBER);
 const Context = createContext();
-
 const initialState = {
   country: "us",
   data: [],

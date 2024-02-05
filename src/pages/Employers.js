@@ -2,7 +2,7 @@ import NavBar from "../components/HomePage_Components/NavBar";
 
 function Employers() {
   return (
-    <div>
+    <div className="container: h-screen w-screen overflow-hidden">
       <NavBar />
       <div className="p-2 px-8">
         <span className="text-lg">Active Employers: </span>
