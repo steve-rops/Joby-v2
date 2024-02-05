@@ -11,7 +11,7 @@ export function Job({ workInfo }) {
 
   return (
     <li
-      className=" h-fit list-none px-1 py-2 bg-indigo-100 rounded-2xl my-5 bg-white shadow-xl mr-3 job-info cursor-pointer  "
+      className=" h-fit list-none px-1 py-2 bg-indigo-100 rounded-2xl my-5 shadow-xl mr-3 job-info cursor-pointer  "
       onClick={() => dispatch({ type: "setSelectedID", payload: workInfo.id })}
     >
       <Link to={`${workInfo.id}`}>
