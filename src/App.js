@@ -14,7 +14,6 @@ function App() {
       <Route path="employers" element={<Employers />} />
       <Route path="pricing" element={<Pricing />} />
       <Route path="app" element={<Main />}>
-        <Route index element={<Navigate to="/app" />} />
         <Route path=":id" element={<DetailedInfo />} />
       </Route>
     </Routes>
