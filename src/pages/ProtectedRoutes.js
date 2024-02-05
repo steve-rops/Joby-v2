@@ -10,7 +10,6 @@ function ProtectedRoutes({ children }) {
 
   useEffect(
     function () {
-      console.log(!user, status);
       if (!user || status === "inactive") navigate("/");
     },
     [navigate, status, user]
