@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import { DetailedInfo } from "./components/DetailedInfo";
 import LandingPage from "./pages/LandingPage";
@@ -14,6 +14,7 @@ function App() {
       <Route path="employers" element={<Employers />} />
       <Route path="pricing" element={<Pricing />} />
       <Route path="app" element={<Main />}>
+        <Route index element={<Navigate to="/app" />} />
         <Route path=":id" element={<DetailedInfo />} />
       </Route>
     </Routes>
