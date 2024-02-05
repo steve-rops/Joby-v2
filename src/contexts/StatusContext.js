@@ -5,8 +5,11 @@ const Context = createContext();
 function StatusContext({ children }) {
   const [status, setStatus] = useState(() => {
     const local = localStorage.getItem("status") || "inactive";
-    if (local.includes("inactive")) return "inactive";
-    if (local.includes("active")) return "active";
+    if (local.includes("in")) {
+      return "inactive";
+    } else {
+      return "active";
+    }
   });
 
   useEffect(() => {
